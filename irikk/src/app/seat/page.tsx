@@ -141,33 +141,34 @@ export default function SeatPage() {
 
   return (
     <main className="page-wrapper">
-      <div className="max-w-lg mx-auto px-5 pt-6 pb-20 md:max-w-xl">
+      <div className="max-w-lg mx-auto px-4 sm:px-5 pt-4 sm:pt-6 pb-20 md:max-w-xl">
         <PageHeader
           title="IS THIS SEAT TAKEN?"
-          subtitle="Got a suspicious chair? Time to investigate."
-          badge="SEAT CHECK"
+          subtitle="Got a suspicious chair? We'll interrogate every pixel and deliver the verdict."
+          badge="SPECIMEN INTAKE"
           badgeRotate={-2}
+          formCode="FORM-84-A // SINGLE_CHAIR"
           backHref="/"
         />
 
-        {/* Progress indicator */}
-        <div className="flex items-center gap-2 mb-8">
-          {["Photo", "Purpose", "Prefs", "Go"].map((label, i) => (
-            <div key={label} className="flex items-center gap-2 flex-1">
-              <div className="flex flex-col items-center flex-1">
-                <div
-                  className={`w-full h-1.5 rounded-full transition-colors duration-300 ${
-                    i <= stepIndex ? "bg-irikk-red" : "bg-irikk-gray"
-                  }`}
-                />
-                <span
-                  className={`font-display text-[10px] font-bold uppercase tracking-wider mt-1 ${
-                    i <= stepIndex ? "text-irikk-red" : "text-irikk-gray-dark"
-                  }`}
-                >
-                  {label}
-                </span>
-              </div>
+        {/* Zine Step Checklist Tracker */}
+        <div className="grid grid-cols-4 gap-1 sm:gap-1.5 mb-6 sm:mb-8 font-mono text-[9px] sm:text-[10px] uppercase select-none">
+          {[
+            { id: "01", label: "SPECIMEN" },
+            { id: "02", label: "INTENT" },
+            { id: "03", label: "DEMANDS" },
+            { id: "04", label: "VERDICT" },
+          ].map((step, i) => (
+            <div
+              key={step.id}
+              className={`p-1 sm:p-1.5 border-2 border-irikk-black text-center transition-all ${
+                i <= stepIndex
+                  ? "bg-irikk-black text-irikk-white shadow-[2px_2px_0px_#E62B1E]"
+                  : "bg-irikk-paper text-irikk-gray-dark border-dashed"
+              }`}
+            >
+              <span className="block font-bold text-irikk-red">{step.id}</span>
+              <span className="font-bold truncate block">{step.label}</span>
             </div>
           ))}
         </div>
@@ -178,11 +179,11 @@ export default function SeatPage() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="brutal-card rounded-xl p-8 bg-irikk-white text-center space-y-4"
+            className="brutal-card p-8 bg-irikk-white text-center space-y-4"
           >
             <LoadingState
-              message="Analyzing your seat..."
-              submessage="Gemini Vision is inspecting occupancy, cushion ergonomics, and surrounding space."
+              message="INTERROGATING THIS CHAIR..."
+              submessage="Gemini Vision is inspecting pixel density, cushion ergonomics, and surrounding occupancy."
             />
           </motion.div>
         ) : (
@@ -194,13 +195,16 @@ export default function SeatPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
             >
+              <div className="font-mono text-[10px] text-irikk-red font-bold uppercase tracking-wider mb-2">
+                // 01. PHOTOGRAPHIC EVIDENCE INTAKE
+              </div>
               <ImageUploader
                 onImageSelect={handleImageSelect}
                 onImageRemove={handleImageRemove}
                 selectedImage={selectedImage}
                 previewUrl={previewUrl}
-                title="SHOW US THE SEAT"
-                subtitle="Take a photo or upload one. We'll do the rest."
+                title="SHOW US THE SPECIMEN"
+                subtitle="Snap a photo or upload. We'll overthink the rest."
               />
             </motion.section>
 
@@ -215,6 +219,9 @@ export default function SeatPage() {
                   exit={{ opacity: 0, y: -10, height: 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
+                  <div className="font-mono text-[10px] text-irikk-red font-bold uppercase tracking-wider mb-2">
+                    // 02. DECLARE YOUR BUTT&apos;S INTENTIONS
+                  </div>
                   <PurposeSelector
                     purposes={SEAT_PURPOSES}
                     selected={selectedPurpose}
@@ -233,6 +240,9 @@ export default function SeatPage() {
                   exit={{ opacity: 0, y: -10, height: 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
+                  <div className="font-mono text-[10px] text-irikk-red font-bold uppercase tracking-wider mb-2">
+                    // 03. SPECIAL DEMANDS & COMPLAINTS
+                  </div>
                   <PreferenceSelector
                     preferences={PREFERENCES}
                     selected={selectedPreferences}
@@ -247,13 +257,13 @@ export default function SeatPage() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="brutal-card p-4 rounded-xl border-l-[6px] border-l-irikk-red bg-red-50 text-irikk-black space-y-1"
+                className="brutal-card p-4 border-l-[6px] border-l-irikk-red bg-red-50 text-irikk-black space-y-1"
               >
-                <div className="flex items-center gap-2 font-display font-bold uppercase text-irikk-red text-sm">
-                  <AlertTriangle size={18} strokeWidth={3} />
-                  <span>Analysis Error</span>
+                <div className="flex items-center gap-2 font-mono font-bold uppercase text-irikk-red text-xs tracking-wider">
+                  <AlertTriangle size={16} strokeWidth={3} />
+                  <span>ANALYSIS ERROR // INTERROGATION FAILED</span>
                 </div>
-                <p className="font-body text-sm text-irikk-near-black/80">
+                <p className="font-body text-xs sm:text-sm text-irikk-near-black font-medium">
                   {analysisError}
                 </p>
               </motion.div>
@@ -278,10 +288,10 @@ export default function SeatPage() {
                     icon={<Sparkles size={20} strokeWidth={3} />}
                     iconRight={<ArrowRight size={20} strokeWidth={3} />}
                   >
-                    {isAnalyzing ? "ANALYZING..." : "ANALYZE THIS SEAT"}
+                    {isAnalyzing ? "INTERROGATING..." : "EXECUTE CHAIR VERDICT"}
                   </Button>
-                  <p className="text-center font-body text-xs text-irikk-gray-dark mt-3">
-                    This is probably more analysis than your seat deserves.
+                  <p className="text-center font-mono text-[11px] text-irikk-gray-dark mt-2.5 uppercase tracking-wider">
+                    ※ Powered by questionable levels of seating intelligence.
                   </p>
                 </motion.div>
               )}

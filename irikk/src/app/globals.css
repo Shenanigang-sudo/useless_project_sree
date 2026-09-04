@@ -1,23 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  /* IRIKK Color Tokens */
-  --color-irikk-red: #E63226;
-  --color-irikk-red-dark: #C4271C;
-  --color-irikk-red-light: #FF4D42;
-  --color-irikk-black: #1A1A1A;
-  --color-irikk-near-black: #2D2D2D;
+  /* IRIKK Color Tokens — Newsprint & Carbon Ink */
+  --color-irikk-red: #E62B1E;
+  --color-irikk-red-dark: #B51D12;
+  --color-irikk-red-light: #FF473A;
+  --color-irikk-black: #0F0F0F;
+  --color-irikk-near-black: #222222;
   --color-irikk-white: #FFFFFF;
-  --color-irikk-off-white: #F5F5F0;
-  --color-irikk-gray: #E5E5E0;
-  --color-irikk-gray-dark: #999999;
+  --color-irikk-off-white: #F4F1EA;
+  --color-irikk-paper: #EDE8DC;
+  --color-irikk-tape: #F3ECD5;
+  --color-irikk-gray: #E0DDD5;
+  --color-irikk-gray-dark: #888880;
 
-  /* Brutalist Shadows */
-  --shadow-brutal-sm: 2px 2px 0px #1A1A1A;
-  --shadow-brutal: 4px 4px 0px #1A1A1A;
-  --shadow-brutal-lg: 6px 6px 0px #1A1A1A;
-  --shadow-brutal-xl: 8px 8px 0px #1A1A1A;
-  --shadow-brutal-red: 4px 4px 0px #E63226;
+  /* Hard Offset Ink Shadows */
+  --shadow-brutal-sm: 2px 2px 0px #0F0F0F;
+  --shadow-brutal: 4px 4px 0px #0F0F0F;
+  --shadow-brutal-lg: 6px 6px 0px #0F0F0F;
+  --shadow-brutal-xl: 8px 8px 0px #0F0F0F;
+  --shadow-brutal-red: 4px 4px 0px #E62B1E;
 
   /* Typography Scale */
   --font-size-xs: 0.75rem;
@@ -30,86 +32,224 @@
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
   --font-size-6xl: 3.75rem;
-  --font-size-7xl: 4.5rem;
+  --font-size-7xl: 4.75rem;
+  --font-size-8xl: 6rem;
 
   /* Spacing */
   --spacing-page: 1.25rem;
 
   /* Border */
-  --border-brutal: 3px solid #1A1A1A;
+  --border-brutal: 3px solid #0F0F0F;
+  --border-brutal-heavy: 4px solid #0F0F0F;
 
   /* Font families */
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "DM Sans", sans-serif;
+  --font-mono: "Space Mono", monospace;
 }
 
-/* Base Styles */
+/* Base Newsprint Styles */
 html {
   font-family: var(--font-body);
   color: var(--color-irikk-black);
   background-color: var(--color-irikk-off-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
   min-height: 100dvh;
+  overflow-x: hidden;
+  max-width: 100vw;
+  /* Subtle newsprint / halftoning texture */
+  background-image: 
+    radial-gradient(#0F0F0F 0.75px, transparent 0.75px),
+    radial-gradient(#0F0F0F 0.75px, #F4F1EA 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  background-attachment: fixed;
 }
 
-/* Scrollbar styling */
+/* Mobile touch enhancements: Eliminate 300ms tap delay & remove mobile browser tap tint */
+button,
+a,
+input,
+select,
+textarea,
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent mobile browser text input auto-zoom */
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+/* Scrollbar styling — Brutalist tactile slider */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-irikk-off-white);
+  background: var(--color-irikk-paper);
+  border-left: 2px solid var(--color-irikk-black);
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-irikk-black);
-  border: 2px solid var(--color-irikk-off-white);
+  border: 2px solid var(--color-irikk-paper);
 }
 
-/* Selection */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-irikk-red);
+}
+
+/* Selection — Highlighter red */
 ::selection {
   background-color: var(--color-irikk-red);
-  color: var(--color-irikk-white);
+  color: #FFFFFF;
 }
 
 /* Focus visible for keyboard navigation */
 *:focus-visible {
   outline: 3px solid var(--color-irikk-red);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
-/* Utility class for the brutalist card style */
+/* ===================================================
+   PUNK ZINE & BRUTALIST UTILITIES
+   =================================================== */
+
+/* Dossier Card — High-contrast paper sheet with ink drop shadow */
 .brutal-card {
   border: 3px solid var(--color-irikk-black);
-  box-shadow: 4px 4px 0px var(--color-irikk-black);
-  background-color: var(--color-irikk-white);
+  box-shadow: 5px 5px 0px var(--color-irikk-black);
+  background-color: #FFFFFF;
+  position: relative;
 }
 
 .brutal-card-sm {
   border: 2px solid var(--color-irikk-black);
-  box-shadow: 2px 2px 0px var(--color-irikk-black);
-  background-color: var(--color-irikk-white);
+  box-shadow: 3px 3px 0px var(--color-irikk-black);
+  background-color: #FFFFFF;
 }
 
-/* Sticker / Badge utility */
-.brutal-badge {
-  border: 2px solid var(--color-irikk-black);
-  box-shadow: 2px 2px 0px var(--color-irikk-black);
-  font-family: var(--font-display);
-  font-weight: 700;
-  text-transform: uppercase;
+/* Heavy Dossier Folder Card */
+.dossier-card {
+  border: 3px solid var(--color-irikk-black);
+  box-shadow: 6px 6px 0px var(--color-irikk-black);
+  background-color: #FFFFFF;
+  position: relative;
+}
+
+/* Masking Tape Strips for collage elements */
+.zine-tape {
+  background: #F3ECD5;
+  border: 1px dashed rgba(15, 15, 15, 0.4);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-irikk-black);
+  padding: 0.15rem 0.6rem;
   display: inline-block;
 }
 
-/* Page transition wrapper */
+/* Rubber Stamp Style Badges */
+.stamp-badge {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2.5px solid currentColor;
+  position: relative;
+}
+
+.stamp-red {
+  color: var(--color-irikk-red);
+  border: 2.5px dashed var(--color-irikk-red);
+  background-color: rgba(230, 43, 30, 0.06);
+}
+
+.stamp-black {
+  color: var(--color-irikk-black);
+  border: 2.5px solid var(--color-irikk-black);
+  background-color: #FFFFFF;
+}
+
+.stamp-solid-red {
+  color: #FFFFFF;
+  background-color: var(--color-irikk-red);
+  border: 2.5px solid var(--color-irikk-black);
+  box-shadow: 3px 3px 0px var(--color-irikk-black);
+}
+
+/* Paper Perforation / Scissor Line */
+.paper-tear {
+  border-top: 2px dashed var(--color-irikk-black);
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.paper-tear::before {
+  content: "✂ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-irikk-gray-dark);
+  letter-spacing: 0.2em;
+  pointer-events: none;
+}
+
+/* Hazard Tape Striping */
+.hazard-stripes {
+  background: repeating-linear-gradient(
+    -45deg,
+    #0F0F0F,
+    #0F0F0F 10px,
+    #F4F1EA 10px,
+    #F4F1EA 20px
+  );
+}
+
+.hazard-stripes-red {
+  background: repeating-linear-gradient(
+    -45deg,
+    #E62B1E,
+    #E62B1E 10px,
+    #0F0F0F 10px,
+    #0F0F0F 20px
+  );
+}
+
+/* Technical Monospace Metadata Label */
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Page wrapper with iOS safe-area support */
 .page-wrapper {
   min-height: 100dvh;
-  padding-bottom: 6rem;
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 640px) {
+  .brutal-card {
+    box-shadow: 4px 4px 0px var(--color-irikk-black);
+  }
 }

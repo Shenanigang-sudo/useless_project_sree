@@ -241,7 +241,7 @@ export function ImageUploader({
             className="brutal-card rounded-xl overflow-hidden bg-irikk-black relative"
           >
             {/* Live Camera Viewfinder */}
-            <div className="relative w-full h-72 sm:h-96 bg-black flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-[62vh] max-h-[460px] min-h-[280px] bg-black flex items-center justify-center overflow-hidden">
               <video
                 ref={videoRef}
                 playsInline
@@ -258,7 +258,7 @@ export function ImageUploader({
               )}
 
               {/* Viewfinder Corner Overlays */}
-              <div className="absolute inset-4 pointer-events-none border-2 border-white/30 rounded-lg flex flex-col justify-between p-2">
+              <div className="absolute inset-3 sm:inset-4 pointer-events-none border-2 border-white/30 rounded-lg flex flex-col justify-between p-2">
                 <div className="flex justify-between">
                   <div className="w-4 h-4 border-t-2 border-l-2 border-irikk-red" />
                   <div className="w-4 h-4 border-t-2 border-r-2 border-irikk-red" />
@@ -281,31 +281,32 @@ export function ImageUploader({
                   <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={toggleCamera}
-                    className="p-2.5 bg-irikk-white text-irikk-black border-2 border-irikk-black rounded-lg shadow-[2px_2px_0px_#1A1A1A] cursor-pointer"
+                    className="w-11 h-11 flex items-center justify-center bg-irikk-white text-irikk-black border-2 border-irikk-black shadow-[2px_2px_0px_#1A1A1A] cursor-pointer touch-manipulation"
                     aria-label="Switch camera"
                     title="Switch camera"
                   >
-                    <SwitchCamera size={18} strokeWidth={3} />
+                    <SwitchCamera size={20} strokeWidth={2.5} />
                   </motion.button>
                 )}
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   onClick={stopCamera}
-                  className="p-2.5 bg-irikk-red text-irikk-white border-2 border-irikk-black rounded-lg shadow-[2px_2px_0px_#1A1A1A] cursor-pointer"
+                  className="w-11 h-11 flex items-center justify-center bg-irikk-red text-irikk-white border-2 border-irikk-black shadow-[2px_2px_0px_#1A1A1A] cursor-pointer touch-manipulation"
                   aria-label="Close camera"
                   title="Close camera"
                 >
-                  <X size={18} strokeWidth={3} />
+                  <X size={20} strokeWidth={3} />
                 </motion.button>
               </div>
             </div>
 
             {/* Bottom Shutter Action Bar */}
-            <div className="p-4 bg-irikk-white border-t-3 border-irikk-black flex items-center justify-between gap-3">
+            <div className="p-3 sm:p-4 bg-irikk-white border-t-3 border-irikk-black flex items-center justify-between gap-3">
               <Button
                 variant="secondary"
                 size="sm"
                 onClick={stopCamera}
+                className="flex-shrink-0"
               >
                 Cancel
               </Button>
@@ -322,26 +323,31 @@ export function ImageUploader({
             </div>
           </motion.div>
         ) : previewUrl && selectedImage ? (
-          /* State 2: Selected Image Preview */
+          /* State 2: Selected Image Preview — Evidence File */
           <motion.div
             key="preview"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="relative brutal-card rounded-xl overflow-hidden"
+            className="relative brutal-card overflow-hidden"
           >
+            {/* Top Evidence Tape */}
+            <div className="absolute top-2 left-3 z-10">
+              <span className="zine-tape">EVIDENCE // ACQUIRED</span>
+            </div>
+
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={previewUrl}
               alt="Selected image preview"
-              className="w-full h-56 md:h-72 object-cover"
+              className="w-full h-56 sm:h-64 md:h-72 object-cover border-b-3 border-irikk-black"
             />
-            <div className="absolute top-3 right-3 flex gap-2">
+            <div className="absolute top-3 right-3 flex gap-2 z-10">
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => startCamera()}
-                className="p-2 bg-irikk-white text-irikk-black border-2 border-irikk-black rounded-lg shadow-[2px_2px_0px_#1A1A1A] cursor-pointer"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center bg-irikk-white text-irikk-black border-2 border-irikk-black shadow-[2px_2px_0px_#0F0F0F] cursor-pointer touch-manipulation"
                 aria-label="Retake photo with camera"
                 title="Retake photo"
               >
@@ -350,7 +356,7 @@ export function ImageUploader({
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={openFilePicker}
-                className="p-2 bg-irikk-white border-2 border-irikk-black rounded-lg shadow-[2px_2px_0px_#1A1A1A] cursor-pointer"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center bg-irikk-white border-2 border-irikk-black shadow-[2px_2px_0px_#0F0F0F] cursor-pointer touch-manipulation"
                 aria-label="Choose another file"
                 title="Choose file"
               >
@@ -362,20 +368,20 @@ export function ImageUploader({
                   onImageRemove();
                   setError(null);
                 }}
-                className="p-2 bg-irikk-red text-irikk-white border-2 border-irikk-black rounded-lg shadow-[2px_2px_0px_#1A1A1A] cursor-pointer"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center bg-irikk-red text-irikk-white border-2 border-irikk-black shadow-[2px_2px_0px_#0F0F0F] cursor-pointer touch-manipulation"
                 aria-label="Remove image"
                 title="Remove image"
               >
                 <X size={18} strokeWidth={3} />
               </motion.button>
             </div>
-            <div className="p-3 border-t-2 border-irikk-black bg-irikk-off-white">
-              <p className="font-body text-sm text-irikk-near-black truncate">
-                📎 {selectedImage.name}
-              </p>
-              <p className="font-body text-xs text-irikk-gray-dark">
-                {formatFileSize(selectedImage.size)}
-              </p>
+            <div className="p-3 bg-irikk-paper flex items-center justify-between font-mono text-xs">
+              <span className="truncate max-w-[130px] sm:max-w-[200px] text-irikk-black font-bold">
+                FILE: {selectedImage.name}
+              </span>
+              <span className="text-irikk-near-black/70 flex-shrink-0">
+                SIZE: {formatFileSize(selectedImage.size)}
+              </span>
             </div>
           </motion.div>
         ) : (
@@ -387,8 +393,8 @@ export function ImageUploader({
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             className={cn(
-              "brutal-card rounded-xl p-8 md:p-12 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-150 min-h-[240px]",
-              isDragging && "border-irikk-red bg-irikk-red/5 shadow-[4px_4px_0px_#E63226]"
+              "brutal-card p-5 sm:p-8 md:p-12 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-150 min-h-[240px] sm:min-h-[260px] relative select-none touch-manipulation",
+              isDragging && "border-irikk-red bg-irikk-red/5 shadow-[5px_5px_0px_#E62B1E]"
             )}
             onClick={openFilePicker}
             onDragOver={handleDragOver}
@@ -404,32 +410,42 @@ export function ImageUploader({
               }
             }}
           >
+            {/* Top Tape Identifier */}
+            <div className="absolute -top-3.5 left-4 sm:left-6">
+              <span className="zine-tape font-mono font-bold text-[10px]">INTAKE_PROTOCOL_#01</span>
+            </div>
+
+            {/* Corner Registration Crosshairs */}
+            <span className="absolute top-2 left-2 text-[10px] font-mono text-irikk-gray-dark select-none">+</span>
+            <span className="absolute top-2 right-2 text-[10px] font-mono text-irikk-gray-dark select-none">+</span>
+            <span className="absolute bottom-2 left-2 text-[10px] font-mono text-irikk-gray-dark select-none">+</span>
+            <span className="absolute bottom-2 right-2 text-[10px] font-mono text-irikk-gray-dark select-none">+</span>
+
             <motion.div
-              animate={isDragging ? { scale: 1.1, rotate: 5 } : { scale: 1, rotate: 0 }}
+              animate={isDragging ? { scale: 1.1, rotate: 4 } : { scale: 1, rotate: 0 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              className="w-14 h-14 sm:w-16 sm:h-16 bg-irikk-paper border-2 border-irikk-black flex items-center justify-center text-irikk-black shadow-[3px_3px_0px_#0F0F0F] mb-3 sm:mb-4"
             >
               <Camera
-                size={48}
+                size={30}
                 strokeWidth={2.5}
-                className={cn(
-                  "mb-4",
-                  isDragging ? "text-irikk-red" : "text-irikk-black"
-                )}
+                className={isDragging ? "text-irikk-red" : "text-irikk-black"}
               />
             </motion.div>
 
-            <h3 className="font-display font-bold text-xl md:text-2xl text-irikk-black uppercase tracking-tight mb-2">
+            <h3 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-irikk-black uppercase tracking-tight mb-1.5 sm:mb-2 leading-tight">
               {title}
             </h3>
-            <p className="font-body text-sm text-irikk-near-black/60 mb-6 max-w-xs">
+            <p className="font-body text-xs sm:text-sm text-irikk-near-black/75 mb-5 sm:mb-6 max-w-xs font-medium leading-relaxed">
               {subtitle}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 w-full sm:w-auto">
               <Button
                 variant="primary"
                 size="sm"
                 icon={<ImagePlus size={16} strokeWidth={3} />}
+                className="w-full sm:w-auto"
                 onClick={(e) => {
                   e.stopPropagation();
                   openFilePicker();
@@ -438,9 +454,10 @@ export function ImageUploader({
                 Choose Image
               </Button>
               <Button
-                variant="secondary"
+                variant="tape"
                 size="sm"
                 icon={<Camera size={16} strokeWidth={3} />}
+                className="w-full sm:w-auto"
                 onClick={(e) => {
                   e.stopPropagation();
                   startCamera();

@@ -18,6 +18,7 @@ interface FeatureCardProps {
   accentBorder?: "left" | "top";
   className?: string;
   index?: number;
+  specCode?: string;
 }
 
 export function FeatureCard({
@@ -31,18 +32,19 @@ export function FeatureCard({
   accentBorder = "left",
   className,
   index = 0,
+  specCode = "SPEC_01",
 }: FeatureCardProps) {
   const router = useRouter();
 
   return (
     <motion.div
       className={cn(
-        "brutal-card rounded-xl p-6 md:p-8 cursor-pointer relative overflow-hidden group",
+        "brutal-card p-5 sm:p-6 md:p-8 cursor-pointer relative overflow-hidden group select-none touch-manipulation",
         "transition-all duration-100",
-        "hover:shadow-[2px_2px_0px_#1A1A1A] hover:translate-x-[2px] hover:translate-y-[2px]",
+        "hover:shadow-[3px_3px_0px_#0F0F0F] hover:translate-x-[3px] hover:translate-y-[3px]",
         "active:shadow-none active:translate-x-[4px] active:translate-y-[4px]",
-        accentBorder === "left" && "border-l-[6px] border-l-irikk-red",
-        accentBorder === "top" && "border-t-[6px] border-t-irikk-red",
+        accentBorder === "left" && "border-l-[8px] border-l-irikk-red",
+        accentBorder === "top" && "border-t-[8px] border-t-irikk-red",
         className
       )}
       onClick={() => router.push(href)}
@@ -52,9 +54,8 @@ export function FeatureCard({
         type: "spring",
         stiffness: 300,
         damping: 25,
-        delay: 0.2 + index * 0.15,
+        delay: 0.15 + index * 0.12,
       }}
-      whileHover={{ rotate: -0.5 }}
       whileTap={{ scale: 0.98 }}
       role="link"
       tabIndex={0}
@@ -66,33 +67,43 @@ export function FeatureCard({
         }
       }}
     >
+      {/* Top Zine Tape Tab */}
+      <div className="absolute -top-3 left-4 sm:left-6 z-10">
+        <span className="zine-tape">{specCode}</span>
+      </div>
+
       {badge && (
-        <div className="absolute -top-1 -right-1 md:top-2 md:right-2">
-          <Badge variant="red" rotate={badgeRotate || 3}>
+        <div className="absolute top-3 right-3">
+          <Badge variant="stamp" rotate={badgeRotate || (index === 0 ? 3 : -3)}>
             {badge}
           </Badge>
         </div>
       )}
 
-      <div className="flex flex-col gap-4">
-        <div className="text-irikk-red">{icon}</div>
+      <div className="flex flex-col gap-3.5 sm:gap-4 pt-2">
+        <div className="w-11 h-11 sm:w-12 sm:h-12 bg-irikk-paper border-2 border-irikk-black flex items-center justify-center text-irikk-red shadow-[2px_2px_0px_#0F0F0F]">
+          {icon}
+        </div>
 
-        <div className="space-y-2">
-          <h3 className="font-display font-bold text-xl md:text-2xl text-irikk-black uppercase tracking-tight leading-tight">
+        <div className="space-y-1.5 sm:space-y-2">
+          <h3 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-irikk-black uppercase tracking-tight leading-[0.95]">
             {title}
           </h3>
-          <p className="font-body text-sm md:text-base text-irikk-near-black/70 leading-relaxed">
+          <p className="font-body text-xs sm:text-sm md:text-base text-irikk-near-black/80 leading-relaxed font-medium">
             {description}
           </p>
         </div>
 
-        <div className="flex items-center gap-2 font-display font-bold text-sm uppercase tracking-wide text-irikk-red group-hover:gap-3 transition-all duration-200">
-          {cta}
-          <ArrowRight
-            size={18}
-            strokeWidth={3}
-            className="group-hover:translate-x-1 transition-transform duration-200"
-          />
+        {/* Industrial CTA Button Strip */}
+        <div className="pt-1 sm:pt-2">
+          <span className="inline-flex items-center gap-2 font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider px-3.5 py-2.5 min-h-[42px] bg-irikk-black text-irikk-white border border-irikk-black group-hover:bg-irikk-red transition-colors duration-150">
+            <span>{cta}</span>
+            <ArrowRight
+              size={16}
+              strokeWidth={3}
+              className="group-hover:translate-x-1 transition-transform duration-150"
+            />
+          </span>
         </div>
       </div>
     </motion.div>

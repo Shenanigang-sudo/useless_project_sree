@@ -10,18 +10,14 @@ interface ScoreDisplayProps {
   className?: string;
 }
 
-const sizeConfig: Record<string, { text: string; container: string }> = {
-  sm: { text: "text-3xl", container: "w-16 h-16" },
-  md: { text: "text-5xl", container: "w-24 h-24" },
-  lg: { text: "text-7xl", container: "w-32 h-32" },
+const sizeConfig: Record<
+  string,
+  { text: string; container: string; badgeText: string }
+> = {
+  sm: { text: "text-3xl", container: "w-18 h-18", badgeText: "text-[9px]" },
+  md: { text: "text-5xl", container: "w-28 h-28", badgeText: "text-[10px]" },
+  lg: { text: "text-7xl", container: "w-36 h-36", badgeText: "text-xs" },
 };
-
-function getScoreColor(score: number): string {
-  if (score >= 80) return "text-irikk-red";
-  if (score >= 60) return "text-irikk-black";
-  if (score >= 40) return "text-irikk-near-black";
-  return "text-irikk-gray-dark";
-}
 
 export function ScoreDisplay({
   score,
@@ -32,32 +28,50 @@ export function ScoreDisplay({
   const config = sizeConfig[size];
 
   return (
-    <div className={cn("flex flex-col items-center gap-2", className)}>
+    <div className={cn("flex flex-col items-center gap-2 select-none", className)}>
+      {/* Official Laboratory Stamped Gauge */}
       <motion.div
         className={cn(
-          "flex items-center justify-center border-3 border-irikk-black rounded-xl bg-irikk-white shadow-[4px_4px_0px_#1A1A1A]",
+          "relative flex flex-col items-center justify-center border-4 border-irikk-black bg-irikk-white shadow-[5px_5px_0px_#0F0F0F]",
           config.container
         )}
-        initial={{ scale: 0, rotate: -10 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
+        initial={{ scale: 0, rotate: -8 }}
+        animate={{ scale: 1, rotate: -2 }}
+        transition={{ type: "spring", stiffness: 400, damping: 18, delay: 0.15 }}
       >
+        {/* Stamp Sub-header */}
+        <span className="font-mono text-[9px] uppercase tracking-widest text-irikk-gray-dark border-b border-irikk-gray pb-0.5 mb-0.5">
+          RATING_IDX
+        </span>
+
+        {/* Large Metric Number */}
         <motion.span
           className={cn(
-            "font-display font-bold",
+            "font-display font-extrabold tracking-tight leading-none",
             config.text,
-            getScoreColor(score)
+            score >= 75 ? "text-irikk-red" : "text-irikk-black"
           )}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.3 }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.35, duration: 0.25 }}
         >
           {score}
         </motion.span>
+
+        <span className="font-mono text-[9px] uppercase text-irikk-near-black/70 mt-0.5">
+          / 100 PTS
+        </span>
+
+        {/* Decorative corner tick */}
+        <div className="absolute top-1 right-1 w-2 h-2 border-t-2 border-r-2 border-irikk-red" />
       </motion.div>
-      <span className="font-display text-xs font-bold uppercase tracking-widest text-irikk-near-black">
-        {label}
-      </span>
+
+      {/* Label Sticker */}
+      <div className="mt-1">
+        <span className="zine-tape font-mono font-bold uppercase tracking-widest">
+          {label}
+        </span>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Armchair, Camera, School, Sparkles } from "lucide-react";
+import { Armchair, School, ArrowRight, Crosshair, AlertTriangle } from "lucide-react";
 import { FeatureCard } from "@/components/home/FeatureCard";
 import { Badge } from "@/components/ui/Badge";
 import { PLAYFUL_QUOTES } from "@/lib/constants";
@@ -16,91 +16,64 @@ export default function HomePage() {
 
   return (
     <main className="page-wrapper">
-      <div className="max-w-lg mx-auto px-5 pt-12 pb-20 md:max-w-2xl lg:max-w-4xl">
-        {/* Hero Section */}
-        <section className="mb-12 md:mb-16">
-          {/* Logo + Tagline */}
-          <motion.div
-            className="mb-8"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <motion.h1
-                className="font-display font-bold text-5xl md:text-6xl tracking-tighter text-irikk-black"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1, type: "spring", stiffness: 300, damping: 25 }}
-              >
-                IRIKK
-              </motion.h1>
-              <motion.div
-                initial={{ opacity: 0, scale: 0, rotate: -20 }}
-                animate={{ opacity: 1, scale: 1, rotate: -3 }}
-                transition={{ delay: 0.3, type: "spring", stiffness: 400, damping: 20 }}
-              >
-                <Badge variant="red" rotate={-3}>
-                  premium butt parking
-                </Badge>
-              </motion.div>
-            </div>
-
-            <motion.p
-              className="font-body text-sm md:text-base text-irikk-near-black/60 italic"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
+      <div className="max-w-xl mx-auto px-4 sm:px-5 pt-6 sm:pt-8 pb-20 md:max-w-2xl lg:max-w-4xl">
+        {/* Hero Section — Zine Poster Headline */}
+        <section className="mb-8 sm:mb-10 md:mb-14">
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+            <motion.h1
+              className="font-display font-black text-5xl sm:text-7xl md:text-8xl tracking-tighter text-irikk-black leading-none uppercase"
+              initial={{ opacity: 0, x: -25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1, type: "spring", stiffness: 300, damping: 25 }}
             >
-            </motion.p>
-          </motion.div>
+              IRIKK
+            </motion.h1>
+            <motion.div
+              initial={{ opacity: 0, scale: 0, rotate: -15 }}
+              animate={{ opacity: 1, scale: 1, rotate: -2.5 }}
+              transition={{ delay: 0.25, type: "spring", stiffness: 400, damping: 20 }}
+            >
+              <Badge variant="red">
+                premium butt parking
+              </Badge>
+            </motion.div>
+          </div>
 
-          {/* Main Heading */}
+          {/* Main Provocative Question */}
           <motion.div
-            className="mb-6"
+            className="mb-4 sm:mb-6 space-y-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 300, damping: 25 }}
           >
-            <h2 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-irikk-black uppercase tracking-tight leading-[0.95]">
-              WHERE DO YOU
+            <h2 className="font-display font-black text-2xl sm:text-4xl md:text-6xl text-irikk-black uppercase tracking-tight leading-[0.94] break-words">
+              WHERE THE HELL
               <br />
-              WANNA{" "}
-              <span className="text-irikk-red relative">
-                SIT
-                <motion.span
-                  className="absolute -bottom-1 left-0 right-0 h-1.5 bg-irikk-red rounded-full"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.8, duration: 0.4, ease: "easeOut" }}
-                  style={{ transformOrigin: "left" }}
-                />
+              ARE YOU{" "}
+              <span className="bg-irikk-red text-irikk-white px-2 py-0.5 inline-block -rotate-1 shadow-[3px_3px_0px_#0F0F0F]">
+                SITTING
               </span>
               ?
             </h2>
           </motion.div>
 
-          {/* Supporting Text */}
+          {/* Supporting Philosophy Text */}
           <motion.p
-            className="font-body text-base md:text-lg text-irikk-near-black/70 leading-relaxed max-w-md"
+            className="font-body text-base md:text-lg text-irikk-near-black/85 leading-relaxed max-w-lg font-medium"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, type: "spring", stiffness: 300, damping: 25 }}
+            transition={{ delay: 0.35, type: "spring", stiffness: 300, damping: 25 }}
           >
-            Upload a photo. Tell us what you&apos;re doing.
-            <br />
-            We&apos;ll overthink the seat for you.
+            Let's put <strong className="text-irikk-black underline decoration-irikk-red decoration-2">WAY too much engineering</strong> into deciding where your ass should go. Snap a photo. State your demands. We&apos;ll overthink the furniture for you.
           </motion.p>
         </section>
 
-        {/* Feature Cards */}
-        <section className="space-y-5 md:space-y-0 md:grid md:grid-cols-2 md:gap-6 mb-12">
+        
+
+        {/* Feature Cards — Underground Gig Poster Cards */}
+        <section className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-6 mb-12">
           <FeatureCard
-            icon={
-              <div className="flex items-center gap-2">
-                <Armchair size={32} strokeWidth={2.5} />
-              </div>
-            }
+            icon={<Armchair size={28} strokeWidth={2.5} />}
             title="IS THIS SEAT TAKEN?"
             description="Got a suspiciously empty chair? Let's investigate."
             cta="CHECK THE SEAT"
@@ -108,40 +81,36 @@ export default function HomePage() {
             badge="SINGLE SEAT"
             badgeRotate={3}
             accentBorder="left"
+            specCode="SPEC_#01"
             index={0}
           />
           <FeatureCard
-            icon={
-              <div className="flex items-center gap-2">
-                <School size={32} strokeWidth={2.5} />
-              </div>
-            }
+            icon={<School size={28} strokeWidth={2.5} />}
             title="WHERE SHOULD I SIT?"
-            description="Show us the classroom. We'll judge every seat."
+            description="Show us the classroom. We'll investigate and judge every seat."
             cta="FIND MY SEAT"
             href="/classroom"
-            badge="FULL ROOM"
+           badge="FULL ROOM"
             badgeRotate={-2}
             accentBorder="left"
+            specCode="SPEC_#02"
             index={1}
           />
         </section>
 
-        {/* Footer Quote */}
+        {/* Manifesto / Footer Notice */}
         <motion.footer
-          className="text-center"
+          className="border-t-3 border-irikk-black pt-6 text-center space-y-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.6 }}
         >
-          <div className="inline-block brutal-card-sm rounded-lg px-4 py-2.5">
-            <p className="font-body text-xs md:text-sm text-irikk-near-black/60">
-              {quote || "We take sitting very seriously."}
+          <div className="inline-block brutal-card-sm px-4 py-2 rotate-[-0.5deg]">
+            <p className="font-mono text-xs text-irikk-near-black font-bold uppercase tracking-wider">
+              {quote || "WE TAKE SITTING WAY TOO SERIOUSLY."}
             </p>
           </div>
-          <p className="mt-4 font-display text-xs text-irikk-gray-dark uppercase tracking-widest">
-            Built with overthinking 
-          </p>
+          
         </motion.footer>
       </div>
     </main>

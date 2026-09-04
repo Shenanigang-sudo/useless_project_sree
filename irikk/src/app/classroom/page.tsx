@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { School, ArrowRight, Sparkles, AlertTriangle } from "lucide-react";
+import { School, ArrowRight, Sparkles, AlertTriangle, Crosshair } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Button } from "@/components/ui/Button";
@@ -146,35 +146,53 @@ export default function ClassroomPage() {
 
   return (
     <main className="page-wrapper">
-      <div className="max-w-lg mx-auto px-5 pt-6 pb-20 md:max-w-xl">
+      <div className="max-w-lg mx-auto px-4 sm:px-5 pt-4 sm:pt-6 pb-20 md:max-w-xl">
         <PageHeader
           title="WHERE SHOULD I SIT?"
-          subtitle="Show us the classroom. We'll judge every seat."
-          badge="CLASSROOM MODE"
-          badgeRotate={-3}
+          subtitle="Tactical lecture hall reconnaissance & seat recommendation."
+          badge="SECTOR SCAN"
+          badgeRotate={-2}
           backHref="/"
         />
 
-        {/* Progress indicator */}
-        <div className="flex items-center gap-2 mb-8">
-          {["Photo", "Purpose", "Prefs", "Go"].map((label, i) => (
-            <div key={label} className="flex items-center gap-2 flex-1">
-              <div className="flex flex-col items-center flex-1">
+        {/* Tactical Zine Step Tracker */}
+        <div className="mb-6 p-2.5 sm:p-3 bg-irikk-white border-2 border-irikk-black shadow-[3px_3px_0px_#0F0F0F] select-none">
+          <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider">
+            <span className="text-irikk-near-black/60">// RECON PROCEDURE</span>
+            <span className="text-irikk-red">
+              STEP {stepIndex + 1} OF 4
+            </span>
+          </div>
+          <div className="grid grid-cols-4 gap-1 sm:gap-1.5 mt-2">
+            {[
+              { num: "01", name: "ROOM" },
+              { num: "02", name: "INTENT" },
+              { num: "03", name: "DEMANDS" },
+              { num: "04", name: "VERDICT" },
+            ].map((step, idx) => {
+              const isActive = idx === stepIndex;
+              const isPassed = idx < stepIndex;
+              return (
                 <div
-                  className={`w-full h-1.5 rounded-full transition-colors duration-300 ${
-                    i <= stepIndex ? "bg-irikk-red" : "bg-irikk-gray"
-                  }`}
-                />
-                <span
-                  className={`font-display text-[10px] font-bold uppercase tracking-wider mt-1 ${
-                    i <= stepIndex ? "text-irikk-red" : "text-irikk-gray-dark"
+                  key={step.num}
+                  className={`p-1 sm:p-1.5 text-center border-2 transition-all ${
+                    isActive
+                      ? "bg-irikk-red text-irikk-white border-irikk-black shadow-[2px_2px_0px_#0F0F0F]"
+                      : isPassed
+                      ? "bg-irikk-black text-irikk-white border-irikk-black"
+                      : "bg-irikk-paper text-irikk-near-black/50 border-irikk-black/20"
                   }`}
                 >
-                  {label}
-                </span>
-              </div>
-            </div>
-          ))}
+                  <p className="font-mono text-[8px] sm:text-[9px] leading-tight font-black">
+                    {step.num}
+                  </p>
+                  <p className="font-display text-[8px] sm:text-[9px] uppercase tracking-wider font-bold truncate">
+                    {step.name}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Loading State Display */}
@@ -183,16 +201,16 @@ export default function ClassroomPage() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="brutal-card rounded-xl p-8 bg-irikk-white text-center space-y-4"
+            className="brutal-card p-8 bg-irikk-white text-center space-y-4"
           >
             <LoadingState
-              message="SCANNING THE ROOM..."
-              submessage="Gemini Vision is judging every chair and overthinking your seating decision."
+              message="EVALUATING LECTURE HALL TOPOGRAPHY..."
+              submessage="Gemini Flash 3.6 is calculating line-of-sight, acoustic exposure, and escape vectors."
             />
           </motion.div>
         ) : (
           /* Normal Classroom Steps */
-          <div className="space-y-8">
+          <div className="space-y-7">
             {/* Step 1: Upload */}
             <motion.section
               initial={{ opacity: 0, y: 20 }}
@@ -204,8 +222,8 @@ export default function ClassroomPage() {
                 onImageRemove={handleImageRemove}
                 selectedImage={selectedImage}
                 previewUrl={previewUrl}
-                title="SHOW US THE ROOM"
-                subtitle="Take a photo of the classroom or lecture hall."
+                title="UPLOAD ROOM TELEMETRY"
+                subtitle="Take or upload a wide photograph of the classroom or lecture hall."
               />
             </motion.section>
 
@@ -252,14 +270,17 @@ export default function ClassroomPage() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="brutal-card p-4 rounded-xl border-l-[6px] border-l-irikk-red bg-red-50 text-irikk-black space-y-1"
+                className="brutal-card p-4 border-l-[6px] border-l-irikk-red bg-red-50 text-irikk-black space-y-1.5"
               >
-                <div className="flex items-center gap-2 font-display font-bold uppercase text-irikk-red text-sm">
+                <div className="flex items-center gap-2 font-display font-black uppercase text-irikk-red text-sm tracking-wide">
                   <AlertTriangle size={18} strokeWidth={3} />
-                  <span>THE AI CHOKED</span>
+                  <span>CRITICAL AI MALFUNCTION</span>
                 </div>
-                <p className="font-body text-sm text-irikk-near-black/80">
+                <p className="font-body text-sm text-irikk-near-black leading-relaxed font-medium">
                   {analysisError}
+                </p>
+                <p className="font-mono text-[10px] text-irikk-red font-bold uppercase tracking-wider pt-1">
+                  [ CHECK INTERNET / RETAKE HIGH-RESOLUTION PHOTO ]
                 </p>
               </motion.div>
             )}
@@ -280,13 +301,13 @@ export default function ClassroomPage() {
                     fullWidth
                     disabled={!isReadyToAnalyze}
                     onClick={handleAnalyze}
-                    icon={<Sparkles size={20} strokeWidth={3} />}
+                    icon={<Crosshair size={20} strokeWidth={3} />}
                     iconRight={<ArrowRight size={20} strokeWidth={3} />}
                   >
-                    {isAnalyzing ? "SCANNING..." : "FIND MY SEAT"}
+                    {isAnalyzing ? "EXECUTING RECON..." : "CALCULATE OPTIMAL SEAT"}
                   </Button>
-                  <p className="text-center font-body text-xs text-irikk-gray-dark mt-3">
-                    We&apos;ll analyze every visible seat. No pressure.
+                  <p className="text-center font-mono text-[11px] text-irikk-near-black/60 uppercase tracking-widest mt-3">
+                    [ WE EVALUATE EVERY VISIBLE SEAT. NO EMBARRASSMENT GUARANTEED ]
                   </p>
                 </motion.div>
               )}
