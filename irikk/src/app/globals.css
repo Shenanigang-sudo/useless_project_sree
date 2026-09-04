@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  /* IRIKK Color Tokens */
+  --color-irikk-red: #E63226;
+  --color-irikk-red-dark: #C4271C;
+  --color-irikk-red-light: #FF4D42;
+  --color-irikk-black: #1A1A1A;
+  --color-irikk-near-black: #2D2D2D;
+  --color-irikk-white: #FFFFFF;
+  --color-irikk-off-white: #F5F5F0;
+  --color-irikk-gray: #E5E5E0;
+  --color-irikk-gray-dark: #999999;
+
+  /* Brutalist Shadows */
+  --shadow-brutal-sm: 2px 2px 0px #1A1A1A;
+  --shadow-brutal: 4px 4px 0px #1A1A1A;
+  --shadow-brutal-lg: 6px 6px 0px #1A1A1A;
+  --shadow-brutal-xl: 8px 8px 0px #1A1A1A;
+  --shadow-brutal-red: 4px 4px 0px #E63226;
+
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
+
+  /* Spacing */
+  --spacing-page: 1.25rem;
+
+  /* Border */
+  --border-brutal: 3px solid #1A1A1A;
+
+  /* Font families */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+/* Base Styles */
+html {
+  font-family: var(--font-body);
+  color: var(--color-irikk-black);
+  background-color: var(--color-irikk-off-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-irikk-off-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-irikk-black);
+  border: 2px solid var(--color-irikk-off-white);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-irikk-red);
+  color: var(--color-irikk-white);
+}
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 3px solid var(--color-irikk-red);
+  outline-offset: 2px;
+}
+
+/* Utility class for the brutalist card style */
+.brutal-card {
+  border: 3px solid var(--color-irikk-black);
+  box-shadow: 4px 4px 0px var(--color-irikk-black);
+  background-color: var(--color-irikk-white);
+}
+
+.brutal-card-sm {
+  border: 2px solid var(--color-irikk-black);
+  box-shadow: 2px 2px 0px var(--color-irikk-black);
+  background-color: var(--color-irikk-white);
+}
+
+/* Sticker / Badge utility */
+.brutal-badge {
+  border: 2px solid var(--color-irikk-black);
+  box-shadow: 2px 2px 0px var(--color-irikk-black);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  display: inline-block;
+}
+
+/* Page transition wrapper */
+.page-wrapper {
+  min-height: 100dvh;
+  padding-bottom: 6rem;
+}
