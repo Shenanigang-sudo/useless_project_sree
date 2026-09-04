@@ -51,7 +51,7 @@ export default function ClassroomResultPage() {
       <main className="page-wrapper">
         <div className="max-w-lg mx-auto px-5 pt-12 pb-20 md:max-w-xl text-center">
           <p className="font-display font-bold text-lg uppercase tracking-wide">
-            Loading classroom analysis...
+            Loading classroom analysis....
           </p>
         </div>
       </main>
