@@ -68,7 +68,7 @@ export default function HomePage() {
           </motion.p>
         </section>
 
-        
+
 
         {/* Feature Cards — Underground Gig Poster Cards */}
         <section className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-6 mb-12">
@@ -90,7 +90,7 @@ export default function HomePage() {
             description="Show us the classroom. We'll investigate and judge every seat."
             cta="FIND MY SEAT"
             href="/classroom"
-           badge="FULL ROOM"
+            badge="FULL ROOM"
             badgeRotate={-2}
             accentBorder="left"
             specCode="SPEC_#02"
@@ -110,7 +110,7 @@ export default function HomePage() {
               {quote || "WE TAKE SITTING WAY TOO SERIOUSLY."}
             </p>
           </div>
-          
+
         </motion.footer>
       </div>
     </main>
