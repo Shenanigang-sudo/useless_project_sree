@@ -92,8 +92,8 @@ For Software:
 ![IRIkk classroom](/irikk/public/preference_class.png)
 *User enters the purpose of their sitting and their preferences/demands on what seat must offer*
 
-![IRIkk seat taken result](/irikk/public/result.png)
-![IRIkk classroom result](/irikk/public/result_class.png)
+![IRIkk seat taken result](/irikk/public/result1.png)
+![IRIkk classroom result](/irikk/public/result2.png)
 *Result of "is this seat taken?*
 
 ![IRIkk feeb=dback](/irikk/public/feedback.png)
