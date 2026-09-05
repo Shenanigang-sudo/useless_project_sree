@@ -82,7 +82,7 @@ Then open the provided local URL in your browser.
 For Software:
 
 # Screenshots 
-![IRIkk Landing Page](public/landing.png)
+![IRIkk Landing Page](/irikk/public/landing.png)
 *The IRIkk landing page introducing the completely unnecessary mission of measuring sitting comfort.*
 
 <img src="C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045424.png">
