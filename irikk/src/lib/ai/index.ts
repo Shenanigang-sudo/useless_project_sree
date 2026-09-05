@@ -11,7 +11,7 @@ import { buildSingleSeatPrompt, buildClassroomPrompt } from "./prompts";
  * Centralized Gemini model declaration
  * Single point of change for vision model upgrades
  */
-export const GEMINI_MODEL = "gemini-3.6-flash";
+export const GEMINI_MODEL = "gemini-3.7-flash";
 
 /**
  * Singleton client reference
@@ -297,6 +297,45 @@ export interface AnalyzeSeatParams {
 }
 
 /**
+ * Helper to call ai.models.generateContent with automatic retry backoff
+ * for transient Google server errors (such as 503 High Demand spikes).
+ */
+async function callGeminiWithRetry(
+  ai: GoogleGenAI,
+  params: Parameters<typeof ai.models.generateContent>[0],
+  maxRetries = 2
+) {
+  let lastError: unknown;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await ai.models.generateContent(params);
+    } catch (err: unknown) {
+      lastError = err;
+      const errMsg = err instanceof Error ? err.message : String(err);
+      const isTransient =
+        errMsg.includes("503") ||
+        errMsg.includes("high demand") ||
+        errMsg.includes("UNAVAILABLE") ||
+        errMsg.includes("temporarily unavailable");
+
+      if (isTransient && attempt < maxRetries) {
+        console.warn(
+          `[IRIKK AI] Transient Gemini error: ${errMsg}. Retrying in ${
+            (attempt + 1) * 1500
+          }ms (attempt ${attempt + 1}/${maxRetries})...`
+        );
+        await new Promise((resolve) =>
+          setTimeout(resolve, (attempt + 1) * 1500)
+        );
+        continue;
+      }
+      throw err;
+    }
+  }
+  throw lastError;
+}
+
+/**
  * Analyzes a single chair/seat image using Gemini Vision.
  *
  * Flow:
@@ -315,7 +354,7 @@ export async function analyzeSeatVision({
   const ai = getGeminiClient();
   const prompt = buildSingleSeatPrompt(purpose, preferences);
 
-  const response = await ai.models.generateContent({
+  const response = await callGeminiWithRetry(ai, {
     model: GEMINI_MODEL,
     contents: [
       {
@@ -375,7 +414,7 @@ export async function analyzeClassroomVision({
   const ai = getGeminiClient();
   const prompt = buildClassroomPrompt(purpose, preferences);
 
-  const response = await ai.models.generateContent({
+  const response = await callGeminiWithRetry(ai, {
     model: GEMINI_MODEL,
     contents: [
       {

@@ -106,12 +106,16 @@ For Software:
 ![IRIkk classroom result](/irikk/public/result2.png)
 *Result of "is this seat taken?*
 
+![IRIkk seat taken result](/irikk/public/classresult1.png)
+![IRIkk classroom result](/irikk/public/classresult.png)
+*Result of "where should I sit?"*
+
 ![IRIkk feeb=dback](/irikk/public/feedback.png)
 *User feedback on the seat*
 
 
-
-
+# Video
+[Watch The Demo Video](https://drive.google.com/file/d/1ibF3tgX7-4k_Usg2wuQyNrf4P1gb9SRr/view?usp=sharing)
 # Additional Demos
 [[Click here to view the website]](https://irikk-byuseless30.vercel.app/)
 
