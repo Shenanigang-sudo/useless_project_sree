@@ -85,17 +85,19 @@ For Software:
 ![IRIkk Landing Page](/irikk/public/landing.png)
 *The IRIkk landing page introducing the completely unnecessary mission of measuring sitting comfort.*
 
-<img src="C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045424.png">
-<img src="C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045424.png">
+![IRIkk Image Upload](/irikk/public/imgupload.png)
 *Image upload*
 
-"C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045527.png"
-"C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045635.png"
-*User enters the prpose of their sitting and their preferences/demands on what seat must offer*
+![IRIkk seat taken](/irikk/public/preference.png)
+![IRIkk classroom](/irikk/public/preference_class.png)
+*User enters the purpose of their sitting and their preferences/demands on what seat must offer*
 
-"C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045541.png"
-"C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045550.png"
+![IRIkk seat taken result](/irikk/public/result.png)
+![IRIkk classroom result](/irikk/public/result_class.png)
 *Result of "is this seat taken?*
+
+![IRIkk feeb=dback](/irikk/public/feedback.png)
+*User feedback on the seat*
 
 
 ### Project Demo
