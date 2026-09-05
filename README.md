@@ -2,83 +2,101 @@
 
 
 
-# [Project Name] 🎯
+# IRIKK 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Individual Participation
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: **SREEJITH RAJ - SCMS SCHOOL OF ENGINEERING AND TECHNOLOGY**
+
 
 ### Project Description
-[2-3 lines about what your project does]
+Humans have been sitting down for thousands of years, but we still freeze up when walking into a crowded lecture hall or eyeing a suspiciously empty café chair.
+**IRIKK** solves this with absurd seriousness. Snap a photo of a chair to run forensic occupancy diagnostics (Is it vacant? Occupied? Or stealthily claimed by a rogue jacket?), or scan an entire classroom to calculate line-of-sight, nap viability, and rapid exit vectors. We overthink the furniture so your butt doesn't have to.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Have you ever sat somewhere and wondered:
+"Is my butt actually comfortable right now?"
+Probably not.
+And that's exactly the problem.
+
+Millions of people sit every single day without knowing whether their seating experience is comfortable, questionable, suspicious, or absolutely cheeks.
+There was clearly a massive gap in the market.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+Introducing **IRIKK** — the world's most unnecessarily sophisticated solution to a problem nobody has ever reported.
 
+IRIkk asks you several extremely important questions about your current sitting experience, processes your answers using absolutely legitimate-looking calculations, and delivers a personalized Butt Comfort Score.
+Because why simply sit when you can quantify the experience?
+
+Features
+- Butt Comfort Analysis
+- Scientifically Questionable Scoring System
+- Personalized Comfort Results
+- Post-Experience Feedback System
+- Ridiculous Questions With Serious UI
+- Completely Unnecessary Analytics
+- Animated & Interactive Interface
+- Zero Real-World Benefits
+  
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- Next.js
+- React
+- TypeScript
+- Node.js
+- TailwindCSS
+- Framer-Motion
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+Tools Used:
+- Visual Studio Code
+- Git & GitHub
+- Browser Developer Tools
+- ESLint
+- Lucide
+- npm
 
 ### Implementation
 For Software:
 # Installation
-[commands]
+Clone the repository:
+git clone https://github.com/Shenanigang-sudo/IRIKK_Useless3.0
+
+Navigate into the project:
+cd irikk
+
+Install dependencies if applicable:
+npm install
 
 # Run
-[commands]
+Start the development server:
+npm run dev
+
+Then open the provided local URL in your browser.
 
 ### Project Documentation
 For Software:
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+# Screenshots 
+![IRIkk Landing Page](public/landing.png)
+*The IRIkk landing page introducing the completely unnecessary mission of measuring sitting comfort.*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img src="C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045424.png">
+<img src="C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045424.png">
+*Image upload*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+"C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045527.png"
+"C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045635.png"
+*User enters the prpose of their sitting and their preferences/demands on what seat must offer*
 
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+"C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045541.png"
+"C:\Users\LOQ\projectlab\Useless3.0\irikk\public\Screenshot 2026-09-05 045550.png"
+*Result of "is this seat taken?*
 
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
 
 ### Project Demo
 # Video
@@ -88,10 +106,7 @@ For Hardware:
 # Additional Demos
 [Add any extra demo materials/links]
 
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
