@@ -14,33 +14,43 @@
 
 
 ### Project Description
-Humans have been sitting down for thousands of years, but we still freeze up when walking into a crowded lecture hall or eyeing a suspiciously empty café chair.
-**IRIKK** solves this with absurd seriousness. Snap a photo of a chair to run forensic occupancy diagnostics (Is it vacant? Occupied? Or stealthily claimed by a rogue jacket?), or scan an entire classroom to calculate line-of-sight, nap viability, and rapid exit vectors. We overthink the furniture so your butt doesn't have to.
+
+
+**IRIKK** (Malayalam for *"Sit!"*) is an unnecessarily sophisticated, AI-vision-powered seating intelligence platform engineered with the chaotic energy of a 90s punk zine and the analytical rigor of NASA. Whether you're inspecting a suspiciously vacant chair to see if a phantom backpack has claimed it, or scanning an entire lecture hall to calculate the ultimate teacher-blindspot for a strategic nap, IRIKK runs military-grade forensic diagnostics so your posterior never makes a bad life choice again.
 
 ### The Problem (that doesn't exist)
-Have you ever sat somewhere and wondered:
-"Is my butt actually comfortable right now?"
-Probably not.
-And that's exactly the problem.
+For over 200,000 years, humanity has sat down using pure, uncalibrated guesswork:
+- **The Ghost-Claim Dilemma**: Is that lonely chair truly available, or did someone claim sovereign territory using a half-empty water bottle and a rogue pen?
+- **The Classroom Russian Roulette**: You walk into a lecture, pick a desk at random, and realize 3 minutes in that you have direct, unblinking eye contact with the professor, zero legroom, and no escape vector.
+- **Biometric Ignorance**: Billions of people sit daily with zero scientific telemetry on whether their seating surface is ergonomic perfection or spinal treason.
 
-Millions of people sit every single day without knowing whether their seating experience is comfortable, questionable, suspicious, or absolutely cheeks.
-There was clearly a massive gap in the market.
+Society called this "just sitting down." We called it a catastrophic seating crisis demanding an immediate high-tech response.
 
 ### The Solution (that nobody asked for)
-Introducing **IRIKK** — the world's most unnecessarily sophisticated solution to a problem nobody has ever reported.
+Introducing **IRIKK** — the world’s most over-engineered, multimodal AI answer to everyday chair anxiety:
 
-IRIkk asks you several extremely important questions about your current sitting experience, processes your answers using absolutely legitimate-looking calculations, and delivers a personalized Butt Comfort Score.
-Because why simply sit when you can quantify the experience?
+1. **Chair Forensic Inspector ("Is This Seat Taken?")**:
+   - Snap a quick photo of any suspicious chair.
+   - Google Gemini Multimodal Vision AI inspects for subtle ghost claims (jackets, bags, stationery), structural integrity, and ergonomic risk.
+   - Delivers a definitive verdict: *Available*, *Occupied*, or *Deceptively Claimed*.
 
-Features
-- Butt Comfort Analysis
-- Scientifically Questionable Scoring System
-- Personalized Comfort Results
-- Post-Experience Feedback System
-- Ridiculous Questions With Serious UI
-- Completely Unnecessary Analytics
-- Animated & Interactive Interface
-- Zero Real-World Benefits
+2. **Classroom Tactical Seat Finder ("Where Should I Sit?")**:
+   - Upload a photo of the entire lecture hall.
+   - Declare your true mission (*Surviving a lecture*, *Stealth napping*, *Laptop power outlet hunting*, or *Rapid exit*).
+   - IRIKK analyzes line-of-sight, exit vectors, and crowding density to highlight your single optimal seat.
+
+3. **Post-Seat Scientific Debrief**:
+   - Conducts an unnecessarily serious post-sit investigation into your butt's actual trauma or comfort.
+   - Archives subjective posterior telemetry for the advancement of human seating science.
+
+### Key Features
+-  **Multimodal Vision AI**: Real-time visual diagnostics for single chairs and panoramic lecture halls.
+-  **Ghost-Claim Detection**: Spots stealth territorial markers (hoodies, bottles, stray notebooks).
+-  **Tactical Seating Calculus**: Pinpoints the ideal desk based on your academic motives and escape needs.
+-  **Absurd Metric Breakdown**: Scores comfort, legroom, glare exposure, and professor line-of-sight.
+-  **Biometric Post-Sit Debrief**: Unapologetically formal feedback inquiry for your posterior experience.
+-  **Punk-Zine Visual Identity**: Neo-brutalist typography, high-contrast badges, and zero corporate fluff.
+-  **Zero Real-World Utility**: Hundreds of lines of code and advanced computer vision deployed to solve a problem you could solve by turning your neck.
   
 ## Technical Details
 ### Technologies/Components Used
